@@ -30,10 +30,15 @@ class ObjectDetectorPainter extends CustomPainter {
 
       var list = detectedObject.labels;
       for (Label label in list) {
-        debugPrint("${label.text}   ${label.confidence.toStringAsFixed(2)}");
+        debugPrint("${label.text} == ${label.confidence.toStringAsFixed(2)}");
         TextSpan span = TextSpan(
             text: label.text,
-            style: const TextStyle(fontSize: 25, color: Colors.blue));
+            style: const TextStyle(fontSize: 25, color: Colors.white),
+            children: [
+              TextSpan(
+                  text: ' ${label.confidence.toStringAsFixed(2)}',
+                  style: const TextStyle(fontSize: 25, color: Colors.yellow)),
+            ]);
         TextPainter tp = TextPainter(
             text: span,
             textAlign: TextAlign.left,
